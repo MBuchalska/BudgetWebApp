@@ -12,13 +12,13 @@ body
 	width: 1000px; 
 }
 
-#title
+.title
 {
 	text-align: center;
 	font-size: 28px;
 }
 
-#left
+.left
 {
 	float: left;
 	width: 470px;
@@ -59,4 +59,61 @@ h3
 #right a:hover
 {
 	color: #4e25d8;
+}
+
+.row
+{
+	display: block;
+}
+
+#registration
+{
+	float: left;
+	width: 440px;
+	padding: 5px;
+	margin-left: 50px;
+	font-size: 24px;
+	margin-top: 30px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password]
+{
+	display: block;
+	font-size: 26px;
+	color: #130838;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: 1px solid #130838;
+	padding: 3px;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus
+{
+	border: 3px solid #ee06dc;
+	color: #ee06dc;
+}
+
+input[type=submit],
+input[type=reset]
+{
+	background-color: #2d1385;
+	color: #ecc9c2;
+	border: 1px solid #130838;
+	font-size: 18px;
+	border-radius: 5px;
+	padding: 3px;
+	margin-top: 10px;
+}
+
+input[type=submit]:hover,
+input[type=reset]:hover
+{
+	color: #2d1385;
+	background-color: #ecc9c2;
+	cursor: pointer;
 }
