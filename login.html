@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8"/>
-	<title>  Planuj swój budżet! </title>
+	<title>  Logowanie </title>
 	<meta name="description" content ="Aplikacja pomoże ci zapanować nad swoim domowym budżetem"/>
 	<meta name="keywords" content="budżet, planowanie wydatków, zestawienia budżetowe"/>
 	<meta http-equiv="X-UA-Compatible" content ="IE=edge,chrome=1"/>
@@ -26,9 +26,15 @@
 				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At quis risus sed vulputate. Erat nam at lectus urna. Nibh praesent tristique magna sit amet purus gravida quis. Ornare suspendisse sed nisi lacus sed viverra. Iaculis nunc sed augue lacus viverra vitae congue. Aliquet sagittis id consectetur purus. Volutpat est velit egestas dui id ornare arcu odio ut. Facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris. Aliquam vestibulum morbi blandit cursus risus at ultrices. Blandit aliquam etiam erat velit scelerisque. Neque egestas congue quisque egestas diam. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Rhoncus urna neque viverra justo nec ultrices dui sapien. Urna nunc id cursus metus aliquam.</p>
 			</div>
 			
-			<div id="right"> 
-				<p> Nie masz jeszcze konta?  <a href="register.html">  Zarejestruj się </a> </p>
-				<p> <a href ="login.html"> Zaloguj się</a></p>
+			<div id="login"> 
+				<form action="menu.html">
+					<p> Logowanie </p>
+					<input type="text" name="imie1" placeholder="Podaj imię lub mail" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj imię lub mail'" required>
+					 <input type="password" name="haslo1" placeholder="Podaj hasło" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj hasło'" required>
+					 
+					<input type="submit" value="Zaloguj się">
+					<input type="reset" value="Wyczyść formularz">
+				</form>
 			</div>
 			<div style="clear:both"></div>
 		</article>
