@@ -83,6 +83,7 @@ input[type=password]
 	display: block;
 	font-size: 26px;
 	color: #130838;
+	background-color: #F0f0f0;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	border-radius: 5px;
@@ -156,11 +157,11 @@ input[type=reset]:hover
 	color: #ecc9c2;
 }
 
-.menu ul a:hover
+/*.menu ul a:hover
 {
 	text-decoration: none;
 	color: #2d1385;
-}
+}*/
 
 .menu ul > li
 {
@@ -175,9 +176,15 @@ input[type=reset]:hover
 	display: block;
 }
 
-.menu ul > li:hover
+.menu ul > li:hover 
 {
 	background-color: #ecc9c2;
+	cursor: pointer;
+}
+
+.menu ul > li:hover > a
+{
+	color: #2d1385;
 }
 
 .content
@@ -186,5 +193,48 @@ input[type=reset]:hover
 	width: 660px;
 	margin-left: 30px;
 	text-align: justify;
+}
+
+.money
+{
+	float: left;
+	width: 660px;
+	margin-left: 30px;
+	text-align: left;
+	font-size: 26px;
+}
+
+.money p
+{
+	margin: 0;
+}
+
+.selection
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+} 
+
+input[type=number],
+input[type=date],
+select
+{
+	font-size: 26px;
+	color: #130838;
+	background-color: #F0f0f0;
+	margin-left: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: 1px solid #130838;
+	padding: 3px;
+}
+
+input[type=number]:focus,
+input[type=date]:focus,
+select:focus
+{
+	border: 3px solid #ee06dc;
+	color: #ee06dc;
 }
 
