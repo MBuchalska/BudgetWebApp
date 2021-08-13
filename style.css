@@ -134,7 +134,7 @@ input[type=reset]:hover
 .menu
 {
 	float: left;
-	width: 300px;
+	width: 250px;
 	border-right: 2px dotted #130838;
 }
 
@@ -156,12 +156,6 @@ input[type=reset]:hover
 	text-decoration: none;
 	color: #ecc9c2;
 }
-
-/*.menu ul a:hover
-{
-	text-decoration: none;
-	color: #2d1385;
-}*/
 
 .menu ul > li
 {
@@ -190,7 +184,7 @@ input[type=reset]:hover
 .content
 {
 	float: left;
-	width: 660px;
+	width: 710px;
 	margin-left: 30px;
 	text-align: justify;
 }
@@ -236,5 +230,63 @@ select:focus
 {
 	border: 3px solid #ee06dc;
 	color: #ee06dc;
+}
+
+.parameters
+{
+	font-size: 26px;
+}
+
+.dates
+{
+	/*display: none;  pole niewidoczne dopóki nie zostanie wybrany zakres niestandardowy dat*/
+}
+
+.leftcol
+{
+	float: left;
+	width: 340px;
+	font-size: 26px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.rightcol
+{
+	float: left;
+	width: 340px;
+	font-size: 26px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 10px;
+}
+
+table
+{
+	border-collapse: collapse;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	width: 300px;
+}
+
+table td
+{
+	border: 1px solid #130838;
+	padding: 2px;
+	text-align: left;
+	font-size: 18px;
+}
+
+#piechart
+{
+	margin-bottom: 30px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cell
+{
+	text-align: right;
 }
 
