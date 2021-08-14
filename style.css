@@ -239,7 +239,7 @@ select:focus
 
 .dates
 {
-	/*display: none;  pole niewidoczne dopóki nie zostanie wybrany zakres niestandardowy dat*/
+	display: none;  /*pole niewidoczne dopóki nie zostanie wybrany zakres niestandardowy dat*/
 }
 
 .leftcol
@@ -248,7 +248,7 @@ select:focus
 	width: 340px;
 	font-size: 26px;
 	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .rightcol
@@ -257,7 +257,7 @@ select:focus
 	width: 340px;
 	font-size: 26px;
 	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 	margin-left: 10px;
 }
 
@@ -280,9 +280,10 @@ table td
 #piechart
 {
 	margin-bottom: 30px;
-	margin-top: 30px;
+	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
+	height: 400px;
 }
 
 .cell
@@ -290,3 +291,7 @@ table td
 	text-align: right;
 }
 
+#yourBudget
+{
+	text-align: left;
+}

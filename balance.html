@@ -12,10 +12,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="style.css">
 	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	
 	
 </head>
 
 <body>
+	
 	<div class="container">
 		<header>
 			<div class="title"><h1>  Planuj z nami swój budżet! </h1></div>
@@ -36,6 +40,7 @@
 		<article>
 			<div class="content"> 
 				<div class="parameters"> 
+				
 				<label for="BParameters"> Parametry bilansu: </label>
 					<select id="BParameters" name="BParameters" required>
 						<option value="11" selected>bieżący miesiąc</option>
@@ -43,6 +48,7 @@
 						<option value="31">bieżący rok</option>
 						<option value="41">zakres niestandardowy</option>
 					</select>
+					
 					<div class="dates">
 						<label>  Data od: <input type="date" name="Date1" ></label>
 						<label>  Data do: <input type="date" name="Date1=2" ></label>	
@@ -75,16 +81,18 @@
 						</table>
 					
 					</div>
+					
 					<div class="summary">
-						<p>Jak ci idzie oszczędzanie</p>
+						<p >Jak ci idzie oszczędzanie:</p>
+						<p id="yourBudget">  </p>
 						<table id="summaryTab">
 							<tr>
 								<td>Przychody: </td>
-								<td  class="cell" id="IncomeSum">2500,00</td>
+								<td  class="cell" id="IncomeSum" >2500.00</td>
 							</tr>
 							<tr>
 								<td>Wydatki: </td>
-								<td  class="cell" id="ExpenseSum">1800,00</td>
+								<td  class="cell" id="ExpenseSum" >1800.00</td>
 							</tr>
 							<tr>
 								<td>Bilans: </td>
@@ -92,8 +100,7 @@
 							</tr>
 						</table>
 					
-					</div>
-					<div id="piechart"> wykres kołowy wydatków </div>
+					</div>		
 				</div>
 				
 				<div class="rightcol"> Tabela z wydatkami
@@ -175,6 +182,7 @@
 				</div>
 				
 				<div style="clear:both"></div>
+				<div id="piechart"> wykres kołowy wydatków </div>
 			</div>
 			
 		</article>
@@ -184,6 +192,9 @@
 		</footer>
 	
 	</div>
+	
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="work.js"></script>
 	
 </body>
 
