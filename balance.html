@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8"/>
+	<title>  Przglądaj bilans </title>
+	<meta name="description" content ="Aplikacja pomoże ci zapanować nad swoim domowym budżetem"/>
+	<meta name="keywords" content="budżet, planowanie wydatków, zestawienia budżetowe"/>
+	<meta http-equiv="X-UA-Compatible" content ="IE=edge,chrome=1"/>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="style.css">
+	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	
+	
+</head>
+
+<body>
+	
+	<div class="container">
+		<header>
+			<div class="title"><h1>  Planuj z nami swój budżet! </h1></div>
+		</header>
+		
+		<nav>
+			<div class="menu"> 
+				<ul>
+					<li><a href="#">Dodaj przychód </a></li>
+					<li><a href="expense.html">Dodaj wydatek</a></li>
+					<li><a href="#">Przeglądaj bilans</a></li>
+					<li><a href="#">Ustawienia </a></li>
+					<li><a href="index.html">Wyloguj się </a></li>
+				</ul>
+			</div>
+		</nav>
+			
+		<article>
+			<div class="content"> 
+				<div class="parameters"> 
+				
+				<label for="BParameters"> Parametry bilansu: </label>
+					<select id="BParameters" name="BParameters" required>
+						<option value="11" selected>bieżący miesiąc</option>
+						<option value="21">poprzedni miesiąc</option>
+						<option value="31">bieżący rok</option>
+						<option value="41">zakres niestandardowy</option>
+					</select>
+					
+					<div class="dates">
+						<label>  Data od: <input type="date" name="Date1" ></label>
+						<label>  Data do: <input type="date" name="Date1=2" ></label>	
+					</div>
+				</div>
+				<div class="leftcol"> 
+					<div class="income"> Tabela z przychodami
+						<table>
+							<th> </th>
+							<tr>
+								<td>przychód</td>
+								<td>kwota [PLN]</td>
+							</tr>
+							<tr>
+								<td>Wynagrodzenia</td>
+								<td class="cell">2500,00</td>
+							</tr>
+							<tr>
+								<td>Odsetki bankowe</td>
+								<td class="cell">12,50</td>
+							</tr>
+							<tr>
+								<td>Sprzedaż na allegro</td>
+								<td class="cell">85,30</td>
+							</tr>
+							<tr>
+								<td>Inne</td>
+								<td class="cell">22,00</td>
+							</tr>
+						</table>
+					
+					</div>
+					
+					<div class="summary">
+						<p >Jak ci idzie oszczędzanie:</p>
+						<p id="yourBudget">  </p>
+						<table id="summaryTab">
+							<tr>
+								<td>Przychody: </td>
+								<td  class="cell" id="IncomeSum" >2500.00</td>
+							</tr>
+							<tr>
+								<td>Wydatki: </td>
+								<td  class="cell" id="ExpenseSum" >1800.00</td>
+							</tr>
+							<tr>
+								<td>Bilans: </td>
+								<td  class="cell" id="FinalBalance">1800,00</td>
+							</tr>
+						</table>
+					
+					</div>		
+				</div>
+				
+				<div class="rightcol"> Tabela z wydatkami
+					<table>
+							<th> </th>
+							<tr>
+								<td>przychód</td>
+								<td>kwota</td>
+							</tr>
+							<tr>
+								<td>Jedzenie</td>
+								<td class="cell">2500,00</td>
+							</tr>
+							<tr>
+								<td>Mieszkanie</td>
+								<td class="cell">12,50</td>
+							</tr>
+							<tr>
+								<td>Transport</td>
+								<td class="cell">85,30</td>
+							</tr>
+							<tr>
+								<td>Telekomunikacja</td>
+								<td class="cell">22,00</td>
+							</tr>
+							<tr>
+								<td>Opieka zdrowotna</td>
+								<td class="cell">2500,00</td>
+							</tr>
+							<tr>
+								<td>Ubranie</td>
+								<td class="cell">12,50</td>
+							</tr>
+							<tr>
+								<td>Higiena</td>
+								<td class="cell">85,30</td>
+							</tr>
+							<tr>
+								<td>Dzieci</td>
+								<td class="cell">22,00</td>
+							</tr>
+							<tr>
+								<td>Rozrywka</td>
+								<td class="cell">2500,00</td>
+							</tr>
+							<tr>
+								<td>Wycieczka</td>
+								<td class="cell">12,50</td>
+							</tr>
+							<tr>
+								<td>Szkolenia</td>
+								<td class="cell">85,30</td>
+							</tr>
+							<tr>
+								<td>Książki</td>
+								<td class="cell">22,00</td>
+							</tr>
+							<tr>
+								<td>Oszczędności</td>
+								<td class="cell">2500,00</td>
+							</tr>
+							<tr>
+								<td>Emerytura</td>
+								<td class="cell">12,50</td>
+							</tr>
+							<tr>
+								<td>Spłata długów</td>
+								<td class="cell">85,30</td>
+							</tr>
+							<tr>
+								<td>Darowizna</td>
+								<td class="cell">22,00</td>
+							</tr>
+							<tr>
+								<td>Inne wydatki</td>
+								<td class="cell">22,00</td>
+							</tr>
+					</table>
+				</div>
+				
+				<div style="clear:both"></div>
+				<div id="piechart"> wykres kołowy wydatków </div>
+			</div>
+			
+		</article>
+	
+		<footer> 
+			<h3><p> Wszelkie prawa zastrzeżone &copy; 2021 Dziękuję za wizytę!</p></h3>
+		</footer>
+	
+	</div>
+	
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="work.js"></script>
+	
+</body>
+
+</html>

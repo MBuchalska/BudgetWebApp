@@ -1,0 +1,317 @@
+body
+{
+	background-color: #ecc9c2;
+	color: #130838;
+	font-family: 'Lato', sans-serif;
+}
+
+.container
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px; 
+}
+
+.title
+{
+	text-align: center;
+	font-size: 28px;
+}
+
+.left
+{
+	float: left;
+	width: 470px;
+	text-align: justify;
+	padding: 5px;
+	padding-right: 20px;
+	font-size: 24px;
+	border-right: 2px dotted #130838;
+}
+
+#right
+{
+	float: left;
+	width: 440px;
+	padding: 5px;
+	margin-left: 50px;
+	font-size: 24px;
+	margin-top: 80px;
+}
+
+h3
+{
+	text-align: center;
+}
+
+#right a:link
+{
+	text-decoration: none;
+	color:  #130838;
+}
+
+#right a:visited
+{
+	text-decoration: none;
+	color:  #130838;
+}
+
+#right a:hover
+{
+	color: #4e25d8;
+}
+
+.row
+{
+	display: block;
+}
+
+#registration
+{
+	float: left;
+	width: 440px;
+	padding: 5px;
+	margin-left: 50px;
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password]
+{
+	display: block;
+	font-size: 26px;
+	color: #130838;
+	background-color: #F0f0f0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: 1px solid #130838;
+	padding: 3px;
+	width: 320px;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus
+{
+	border: 3px solid #ee06dc;
+	color: #ee06dc;
+}
+
+input[type=submit],
+input[type=reset]
+{
+	background-color: #2d1385;
+	color: #ecc9c2;
+	border: 1px solid #130838;
+	font-size: 18px;
+	border-radius: 5px;
+	padding: 3px;
+	margin-top: 10px;
+	width: 160px;
+}
+
+input[type=submit]:hover,
+input[type=reset]:hover
+{
+	color: #2d1385;
+	background-color: #ecc9c2;
+	cursor: pointer;
+}
+
+#login
+{
+	float: left;
+	width: 440px;
+	padding: 5px;
+	margin-left: 50px;
+	font-size: 24px;
+	margin-top: 20px;
+}
+
+.menu
+{
+	float: left;
+	width: 250px;
+	border-right: 2px dotted #130838;
+}
+
+.menu ul
+{
+	list-style-type: none;
+	padding-left: 5px;
+	width: 200px;
+}
+
+.menu ul a:link
+{
+	text-decoration: none;
+	color: #ecc9c2;
+}
+
+.menu ul a:visited
+{
+	text-decoration: none;
+	color: #ecc9c2;
+}
+
+.menu ul > li
+{
+	list-style-type: none;
+	background-color: #2d1385;
+	color: #ecc9c2;
+	border: 1px solid #130838;
+	border-radius: 5px;
+	padding: 3px;
+	margin: 5px;
+	font-size: 24px;
+	display: block;
+}
+
+.menu ul > li:hover 
+{
+	background-color: #ecc9c2;
+	cursor: pointer;
+}
+
+.menu ul > li:hover > a
+{
+	color: #2d1385;
+}
+
+.content
+{
+	float: left;
+	width: 710px;
+	margin-left: 30px;
+	text-align: justify;
+}
+
+.welcome
+{
+	margin-left: 30px;
+	font-size: 20px;
+}
+
+.quote
+{
+	margin-left: 20px;
+	margin-bottom: 3px;
+	font-style: italic;
+}
+
+.author
+{
+	margin-top: 2px;
+	text-align: right;
+	font-weight: 700;
+}
+
+.money
+{
+	float: left;
+	width: 660px;
+	margin-left: 30px;
+	text-align: left;
+	font-size: 26px;
+}
+
+.money p
+{
+	margin: 0;
+}
+
+.selection
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+} 
+
+input[type=number],
+input[type=date],
+select
+{
+	font-size: 26px;
+	color: #130838;
+	background-color: #F0f0f0;
+	margin-left: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: 1px solid #130838;
+	padding: 3px;
+}
+
+input[type=number]:focus,
+input[type=date]:focus,
+select:focus
+{
+	border: 3px solid #ee06dc;
+	color: #ee06dc;
+}
+
+.parameters
+{
+	font-size: 26px;
+}
+
+.dates
+{
+	display: none;  /*pole niewidoczne dopóki nie zostanie wybrany zakres niestandardowy dat*/
+}
+
+.leftcol
+{
+	float: left;
+	width: 340px;
+	font-size: 26px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.rightcol
+{
+	float: left;
+	width: 340px;
+	font-size: 26px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+table
+{
+	border-collapse: collapse;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	width: 300px;
+}
+
+table td
+{
+	border: 1px solid #130838;
+	padding: 2px;
+	text-align: left;
+	font-size: 18px;
+}
+
+#piechart
+{
+	margin-bottom: 30px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 400px;
+}
+
+.cell
+{
+	text-align: right;
+}
+
+#yourBudget
+{
+	text-align: left;
+}

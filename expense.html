@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8"/>
+	<title>  Dodaj wydatek </title>
+	<meta name="description" content ="Aplikacja pomoże ci zapanować nad swoim domowym budżetem"/>
+	<meta name="keywords" content="budżet, planowanie wydatków, zestawienia budżetowe"/>
+	<meta http-equiv="X-UA-Compatible" content ="IE=edge,chrome=1"/>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="style.css">
+	
+	
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<div class="title"><h1>  Dodawanie wydatku </h1></div>
+		</header>
+		
+		<nav>
+			<div class="menu"> 
+				<ul>
+					<li><a href="#">Dodaj przychód </a></li>
+					<li><a href="#">Dodaj wydatek</a></li>
+					<li><a href="balance.html">Przeglądaj bilans</a></li>
+					<li><a href="#">Ustawienia </a></li>
+					<li><a href="index.html">Wyloguj się </a></li>
+				</ul>
+			</div>
+		</nav>
+			
+		<article>
+			<form action="menu.html">
+				<div class="money"> 
+					<p><label> Kwota wydatku:  <input type="number" name="expence" step="0.01" required ></label></p>
+					<p><label>  Data: <input type="date" name="expDate" required ></label></p>
+					
+					<label for="HowToPay"> Sposób płatności:</label>
+						<p><input type="radio" name="HowToPay" required> Gotówka </p>
+						<p><input type="radio" name="HowToPay" required> Karta debetowa</p>
+						<p><input type="radio" name="HowToPay" required> Karta kredytowa </p>
+					
+					<div class="selection">
+						<label for="expCategory"> Kategoria wydatku: </label>
+							<select id="expCategory" name="expCategory" required>
+								<option value="1">Jedzenie</option>
+								<option value="2">Mieszkanie</option>
+								<option value="3">Transport</option>
+								<option value="4">Telekomunikacja</option>
+								<option value="5">Opieka zdrowotna</option>
+								<option value="6">Ubranie</option>
+								<option value="7">Higiena</option>
+								<option value="8">Dzieci</option>
+								<option value="9">Rozrywka</option>
+								<option value="10">Wycieczka</option>
+								<option value="11">Szkolenia</option>
+								<option value="12">Książki</option>
+								<option value="13">Emerytura</option>
+								<option value="14">Spłata długów</option>
+								<option value="15">Darowizna</option>
+								<option value="16">Oszczedności</option>
+								<option value="17">Inne wydatki</option>
+							<select>
+						</div>
+						<input type="text" name="ExpComment" placeholder="Komentarz do wydatku" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" > 
+						
+					
+					<input type="submit" value="Dodaj">
+					<input type="reset" value="Anuluj">
+				</form>
+					
+			</div>
+			<div style="clear:both"></div>
+		</article>
+	
+		<footer> 
+			<h3><p> Wszelkie prawa zastrzeżone &copy; 2021 Dziękuję za wizytę!</p></h3>
+		</footer>
+	
+	</div>
+	
+</body>
+
+</html>
