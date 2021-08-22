@@ -85,15 +85,6 @@ input[type=reset]:hover
 	cursor: pointer;
 }
 
-#login
-{
-	float: left;
-	width: 440px;
-	padding: 5px;
-	margin-left: 50px;
-	font-size: 24px;
-	margin-top: 20px;
-}
 
 .menu
 {
