@@ -33,19 +33,13 @@ body
 	color: #4e25d8;
 }
 
-/*.row
-{
-	display: block;
-}*/
 
-#registration
+.input-group-text 
 {
-	float: left;
-	width: 440px;
-	padding: 5px;
-	margin-left: 50px;
-	font-size: 24px;
-	margin-top: 10px;
+	border: 1px solid #130838;
+	background-color: #2d1385;
+	color: #ecc9c2;
+	font-size: 20px;
 }
 
 input[type=text],
@@ -56,8 +50,6 @@ input[type=password]
 	font-size: 26px;
 	color: #130838;
 	background-color: #F0f0f0;
-	margin-top: 15px;
-	margin-bottom: 15px;
 	border-radius: 5px;
 	border: 1px solid #130838;
 	padding: 3px;
@@ -78,11 +70,11 @@ input[type=reset]
 	background-color: #2d1385;
 	color: #ecc9c2;
 	border: 1px solid #130838;
-	font-size: 18px;
+	font-size: 20px;
 	border-radius: 5px;
 	padding: 3px;
 	margin-top: 10px;
-	width: 160px;
+	width: 185px;
 }
 
 input[type=submit]:hover,
