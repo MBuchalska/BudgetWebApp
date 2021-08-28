@@ -1,3 +1,24 @@
+//Expense and income - insert initial date
+
+window.onload = getDate;
+
+function getDate(){
+	var today = new Date();
+			
+	var day = dzisiaj.getDate();
+	var month = dzisiaj.getMonth()+1;
+	var year = dzisiaj.getFullYear();
+		
+		if (month<10) month="0"+month;
+		if (day<10) day="0"+day;
+		
+	var DateNow = year+"-"+month+"-"+day;
+
+	$('#expDate').html('value','DateNow');
+}
+
+
+
 //Balance - make date range visible in case of custom date range
 
 var RangeOption = document.getElementById("BParameters");

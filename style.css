@@ -146,39 +146,33 @@ input[type=reset]:hover
 	font-weight: 700;
 }
 
-.money
-{
-	float: left;
-	width: 660px;
-	margin-left: 30px;
-	text-align: left;
-	font-size: 26px;
-}
-
-.money p
-{
-	margin: 0;
-}
-
-.selection
-{
-	margin-top: 20px;
-	margin-bottom: 20px;
-} 
 
 input[type=number],
-input[type=date],
-select
+input[type=date]
 {
-	font-size: 26px;
 	color: #130838;
 	background-color: #F0f0f0;
 	margin-left: 10px;
-	margin-top: 15px;
-	margin-bottom: 15px;
 	border-radius: 5px;
 	border: 1px solid #130838;
 	padding: 3px;
+	width: 200px;
+}
+
+select
+{
+	color: #130838;
+	background-color: #F0f0f0;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 1px solid #130838;
+	padding: 3px;
+}
+
+.form-check-input:checked
+{
+	background-color: #ee06dc;
+	border-color: #ee06dc;
 }
 
 input[type=number]:focus,
