@@ -156,7 +156,7 @@ input[type=date]
 	border-radius: 5px;
 	border: 1px solid #130838;
 	padding: 3px;
-	width: 200px;
+
 }
 
 select
@@ -183,64 +183,37 @@ select:focus
 	color: #ee06dc;
 }
 
-.parameters
-{
-	font-size: 26px;
-}
-
 .dates
 {
 	display: none;  /*pole niewidoczne dopóki nie zostanie wybrany zakres niestandardowy dat*/
 }
 
-.leftcol
-{
-	float: left;
-	width: 340px;
-	font-size: 26px;
-	margin-top: 30px;
-	margin-bottom: 10px;
-}
-
-.rightcol
-{
-	float: left;
-	width: 340px;
-	font-size: 26px;
-	margin-top: 30px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-}
-
-table
+.table
 {
 	border-collapse: collapse;
-	margin-top: 10px;
-	margin-bottom: 30px;
+
 	width: 300px;
+	color: #130838;
 }
 
-table td,
-table th
+.table td,
+.table th
 {
 	border: 1px solid #130838;
-	padding: 2px;
 	text-align: left;
 	font-size: 18px;
+}
+
+.cell
+{
+	text-align: right !important;
 }
 
 #piechart
 {
 	margin-bottom: 30px;
 	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
 	height: 400px;
-}
-
-.cell
-{
-	text-align: right;
 }
 
 #yourBudget
@@ -265,5 +238,8 @@ table th
 		background-color: #eee3e0;
 	}
 
-	
+	#Date2
+	{
+		margin-top: 10px;
+	}
 }

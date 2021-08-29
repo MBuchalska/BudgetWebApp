@@ -5,9 +5,9 @@ window.onload = getDate;
 function getDate(){
 	var today = new Date();
 			
-	var day = dzisiaj.getDate();
-	var month = dzisiaj.getMonth()+1;
-	var year = dzisiaj.getFullYear();
+	var day = today.getDate();
+	var month = today.getMonth()+1;
+	var year = today.getFullYear();
 		
 		if (month<10) month="0"+month;
 		if (day<10) day="0"+day;
@@ -15,6 +15,7 @@ function getDate(){
 	var DateNow = year+"-"+month+"-"+day;
 
 	$('#expDate').html('value','DateNow');
+	$('#incDate').html('value','DateNow');
 }
 
 
