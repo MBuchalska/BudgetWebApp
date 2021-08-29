@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8"/>
-	<title>  Dodaj wydatek </title>
+	<title>  Dodaj przychód </title>
 	<meta name="description" content ="Aplikacja pomoże ci zapanować nad swoim domowym budżetem"/>
 	<meta name="keywords" content="budżet, planowanie wydatków, zestawienia budżetowe"/>
 	<meta http-equiv="X-UA-Compatible" content ="IE=edge"/>
@@ -22,7 +22,7 @@
 <body>
 	
 		<header>
-			<h1 class="h1 text-center my-4 font-weight-bold text-uppercase ">  Dodawanie wydatku </h1>
+			<h1 class="h1 text-center my-4 font-weight-bold text-uppercase ">  Dodawanie przychodu </h1>
 		</header>
 		
 	
@@ -50,57 +50,40 @@
 			<div class="row">
 				<form action="menu.html" class="col-md-8 mx-md-auto fs-2">
 					
-						<p class="mt-5" ><label> Kwota wydatku:  <input type="number" name="expence" step="0.01" required aria-label="Kwota wydatku"></label></p>
+						<p class="mt-5" ><label> Kwota przychodu:  <input type="number" name="income" step="0.01" required aria-label="Kwota przychodu"></label></p>
 						
-						<p class="mt-5"><label aria-label="Data">  Data: <input type="date" name="expDate" id="expDate"  value="2021-04-15" required ></label></p>
+						<p class="mt-5"><label aria-label="Data">  Data: <input type="date" name="incDate" id="incDate"  value="2021-04-15" required ></label></p>
 						
-						<label class="mt-5 font-weight-bold "> Sposób płatności:</label>
+						<label class="mt-5 font-weight-bold "> Kategoria przychodu:</label>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="HowToPay" id="HowToPay1" required>
-								<label class="form-check-label" for="HowToPay1" >
-								Gotówka
+								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome1" required>
+								<label class="form-check-label" for="whatIncome1" >
+								Wynagrodzenie
 							  </label>
 							</div>
 							
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="HowToPay" id="HowToPay2" required>
-								<label class="form-check-label" for="HowToPay2" >
-								Karta debetowa
+								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome2" required>
+								<label class="form-check-label" for="whatIncome2" >
+								Odsetki bankowe
 							  </label>
 							</div>
 							
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="HowToPay" id="HowToPay3" required>
-								<label class="form-check-label" for="HowToPay3" >
-								Karta kredytowa
+								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome3" required>
+								<label class="form-check-label" for="whatIncome3" >
+								Sprzedaż na allegro
 							  </label>
 							</div>
 							
-						
-						<div class="mt-5">
-							<label for="expCategory"> Kategoria wydatku: </label>
-								<select id="expCategory" name="expCategory" required>
-									<option value=""> wybierz  </option>
-									<option value="1">Jedzenie</option>
-									<option value="2">Mieszkanie</option>
-									<option value="3">Transport</option>
-									<option value="4">Telekomunikacja</option>
-									<option value="5">Opieka zdrowotna</option>
-									<option value="6">Ubranie</option>
-									<option value="7">Higiena</option>
-									<option value="8">Dzieci</option>
-									<option value="9">Rozrywka</option>
-									<option value="10">Wycieczka</option>
-									<option value="11">Szkolenia</option>
-									<option value="12">Książki</option>
-									<option value="13">Emerytura</option>
-									<option value="14">Spłata długów</option>
-									<option value="15">Darowizna</option>
-									<option value="16">Oszczedności</option>
-									<option value="17">Inne wydatki</option>
-								</select>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome4" required>
+								<label class="form-check-label" for="whatIncome4" >
+								Inne
+							  </label>
 							</div>
-							<input type="text" name="ExpComment" placeholder="Komentarz do wydatku" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" class="mt-3"> 
+						
+							<input type="text" name="IncComment" placeholder="Komentarz do wydatku" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" class="mt-3"> 
 							
 						<div class="mt-5">
 							<input type="submit" value="Dodaj">
