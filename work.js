@@ -1,4 +1,4 @@
-//Expense and income - insert initial date
+//Expense and income - insert initial date, today
 
 window.onload = getDate;
 
@@ -14,11 +14,9 @@ function getDate(){
 		
 	var DateNow = year+"-"+month+"-"+day;
 
-	$('#expDate').html('value','DateNow');
-	$('#incDate').html('value','DateNow');
+	const dateInput = document.querySelector('.form__date');
+	dateInput.value = DateNow;
 }
-
-
 
 //Balance - make date range visible in case of custom date range
 
