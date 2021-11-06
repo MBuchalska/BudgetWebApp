@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION['registercomplete']==false){
+	header("Location: index.php");
+}
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -26,14 +34,14 @@
 		<section>
 			<div class="row">
 				<div class="col-md-6 bg-custom py-4 my-1" id="left"> 
-					<p>Chcesz zaoszczędzić pieniądze, ale nie wiesz jak się do tego zabrać? </p>
-					<p> Nasza aplikacja pomoże Ci uporządkować wydatki i ocenić możliwości oszczędzania</p>
+					<p>Gratulacje! Rejestracja zakończona. </p>
+					<p>Miłego oszczędzania z naszą aplikacją </p>					
 					<p class="quote">"To nie pieniądze dają szczęście, ale to, co dzięki nim można zrobić ze swoim życiem." 
 					<p class="author">Lois Frankel</p>
 				</div>
 				
 				<div class="col-md-6 py-2 my-auto" id="right"> 
-					<p> Nie masz jeszcze konta?  <a href="register.html" class="font-weight-bold">  Zarejestruj się </a> </p>
+					<p> Nie masz jeszcze konta?  <a href="register.php" class="font-weight-bold">  Zarejestruj się </a> </p>
 					<p> Masz konto? <a href ="login.html" class="font-weight-bold"> Zaloguj się</a></p>
 				</div>
 			</div>
