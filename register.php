@@ -57,7 +57,16 @@ if(isset($_POST['mail'])){
 					$validation_OK=false;
 					$_SESSION['e_email']="Istnieje już konto przypisane do tego maila";
 				}
+
+			$result1=$connection->query("SELECT userID FROM users WHERE userName='$nick'");
+			if(!$result) throw new Exception($connection->error);
 			
+			$how_many_names = $result1->num_rows;
+				if ($how_many_names>0){
+					$validation_OK=false;
+					$_SESSION['e_nick']="Użytkownik o takiej nazwie jest już zarejestrowany. Wybierz inną nazwę.";
+				}
+				
 			// adding a new record to the base
 			if($validation_OK==true){
 				
@@ -138,7 +147,7 @@ if(isset($_POST['mail'])){
 						<p> Rejestracja </p>
 						<div class="input-group mb-3">
 						  <span class="input-group-text " id="basic-addon1"> <i class="icon-user"></i></span>
-						  <input type="text" name="imie" placeholder="Podaj imię" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj imię'" aria-label="Username" aria-describedby="basic-addon1" required >
+						  <input type="text" name="imie" placeholder="Podaj imię" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj nazwę użytkownika'" aria-label="Username" aria-describedby="basic-addon1" required >
 						</div>
 						<?php
 							if(isset($_SESSION['e_nick'])){
