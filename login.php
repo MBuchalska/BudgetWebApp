@@ -1,3 +1,60 @@
+<?php
+session_start();
+$_SESSION['logged']=false;
+
+if ((isset($_POST['login']))&&(isset($_POST['password']))){
+	
+	require_once "config.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);
+
+	$connection = new mysqli($host, $user, $password, $database);
+	if($connection->connect_errno!=0) {
+		throw new Exception (mysqli_connect_errno());
+	}
+
+	else {
+		//check if login and password characters are ok
+		$login=$_POST['login'];
+		$password=$_POST['password'];
+		
+		$login=htmlentities($login, ENT_QUOTES, "UTF-8");
+		$password=htmlentities($password, ENT_QUOTES, "UTF-8");
+		//$password_hash = password_hash($password, PASSWORD_DEFAULT);
+		
+		$result=$connection->query("SELECT * FROM users WHERE email='$login' OR userName='$login'");
+		if(!$result) throw new Exception($connection->error);
+		
+		$HowManyUsers=$result->num_rows;
+		
+		if($HowManyUsers>0){
+			//get user data from the database 
+			$UserData=$result->fetch_assoc();
+			
+			if(password_verify($password, $UserData['password'])){
+				$_SESSION['logged']=true;
+				
+				$_SESSION['ID']=$UserData['userID'];
+				$_SESSION['login']=$UserData['userName'];
+				
+				$result->close();
+				
+				header('Location: menu.php');
+			}
+			
+			else{
+				$_SESSION['login_error']="Nieprawidłowy login lub hasło";
+			}
+		}
+		
+		else{
+			$_SESSION['login_error']="Nieprawidłowy login lub hasło";
+		}
+		
+		$connection->close();
+	}
+}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -35,18 +92,31 @@
 				</div>
 				
 				<div class= "col-md-6 my-auto" id="login"> 
-					<form action="menu.html">
+					<form method="post">
 						<p> Logowanie </p>
 						
 						<div class="input-group mb-3">
 						  <span class="input-group-text " id="basic-addon1"> <i class="icon-user"></i></span>
-						  <input type="text" name="imie1" placeholder="Podaj imię lub mail" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj imię lub mail'" aria-label="Username" aria-describedby="basic-addon1" required >
+						  <input type="text" name="login" placeholder="Podaj imię lub mail" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj imię lub mail'" aria-label="Username" aria-describedby="basic-addon1" required >
 						</div>
+						 <?php
+							if(isset($_SESSION['login_error'])){
+								echo '<div class="error">'.$_SESSION['login_error'].'</div>';
+								unset($_SESSION['login_error']);
+							}
+						?>
 						
 						<div class="input-group mb-3">
 						  <span class="input-group-text " id="basic-addon3"> <i class="icon-lock"></i></span>
-						  <input type="password" name="haslo1" placeholder="Podaj hasło" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj hasło'" aria-label="Username" aria-describedby="basic-addon3" required >
+						  <input type="password" name="password" placeholder="Podaj hasło" onfocus="this.placeholder=''" onblur="this.placeholder='Podaj hasło'" aria-label="Username" aria-describedby="basic-addon3" required >
 						</div>
+						 <?php
+							if(isset($_SESSION['login_error'])){
+								echo '<div class="error">'.$_SESSION['login_error'].'</div>';
+								unset($_SESSION['login_error']);
+							}
+						?>
+
 						 
 						<input type="submit" value="Zaloguj się">
 						<input type="reset" value="Wyczyść formularz">

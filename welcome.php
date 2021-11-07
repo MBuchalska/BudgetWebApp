@@ -3,6 +3,11 @@ session_start();
 if($_SESSION['registercomplete']==false){
 	header("Location: index.php");
 }
+
+if($_SESSION['logged']==true){
+	header('Location: menu.php');
+	exit();
+}
 ?>
 
 
@@ -42,7 +47,7 @@ if($_SESSION['registercomplete']==false){
 				
 				<div class="col-md-6 py-2 my-auto" id="right"> 
 					<p> Nie masz jeszcze konta?  <a href="register.php" class="font-weight-bold">  Zarejestruj się </a> </p>
-					<p> Masz konto? <a href ="login.html" class="font-weight-bold"> Zaloguj się</a></p>
+					<p> Masz konto? <a href ="login.php" class="font-weight-bold"> Zaloguj się</a></p>
 				</div>
 			</div>
 		</section>
