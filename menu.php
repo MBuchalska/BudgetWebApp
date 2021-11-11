@@ -35,7 +35,7 @@ if($_SESSION['logged']==false){
 		
 			<nav class="navbar navbar-dark bg-nav navbar-expand-md mx-auto">
 			
-			<a class="navbar-brand" href="menu.html"><i class="icon-dollar"></i> YourBudgetApp</a>
+			<a class="navbar-brand" href="menu.php"><i class="icon-dollar"></i> YourBudgetApp</a>
 			
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 			<span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@ if($_SESSION['logged']==false){
 			
 				<div class="collapse navbar-collapse" id="menu" > 
 					<ul class="navbar-nav mx-auto">
-						<li class="nav-item"><a class="nav-link" href="income.html">Dodaj przychód </a></li>
+						<li class="nav-item"><a class="nav-link" href="income.php">Dodaj przychód </a></li>
 						<li class="nav-item"><a class="nav-link" href="expense.html">Dodaj wydatek</a></li>
 						<li class="nav-item"><a class="nav-link" href="balance.html">Przeglądaj bilans</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Ustawienia </a></li>

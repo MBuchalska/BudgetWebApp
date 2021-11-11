@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION['logged']==false){
+	header('Location: index.php');
+	exit();
+}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -24,11 +32,10 @@
 		<header>
 			<h1 class="h1 text-center my-4 font-weight-bold text-uppercase ">  Dodawanie przychodu </h1>
 		</header>
-		
 	
 		<nav class="navbar navbar-dark bg-nav navbar-expand-md mx-auto">
 			
-			<a class="navbar-brand" href="menu.html"><i class="icon-dollar"></i> YourBudgetApp</a>
+			<a class="navbar-brand" href="menu.php"><i class="icon-dollar"></i> YourBudgetApp</a>
 				
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 			<span class="navbar-toggler-icon"></span>
@@ -36,11 +43,11 @@
 				
 			<div class="collapse navbar-collapse" id="menu" > 
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item"><a class="nav-link" href="income.html">Dodaj przychód </a></li>
+					<li class="nav-item"><a class="nav-link" href="income.php">Dodaj przychód </a></li>
 					<li class="nav-item"><a class="nav-link active" href="expense.html">Dodaj wydatek</a></li>
 					<li class="nav-item"><a class="nav-link" href="balance.html">Przeglądaj bilans</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Ustawienia </a></li>
-					<li class="nav-item"><a class="nav-link" href="index.html"><i class="icon-logout"></i>Wyloguj się </a></li>
+					<li class="nav-item"><a class="nav-link" href="logout.php"><i class="icon-logout"></i>Wyloguj się </a></li>
 				</ul>
 			</div>
 		</nav>
@@ -48,42 +55,54 @@
 	<div class="container">			
 		<section>
 			<div class="row">
-				<form action="menu.html" class="col-md-8 mx-md-auto fs-2">
+				<?php
+				if ($_SESSION['incomeadded']==true){
+					echo '<p class="h2 text-center mt-5 font-weight-bold"> Przychód dodany do bazy </p>';
+					$_SESSION['incomeadded']=false;
+				}
+				?>
+				
+				<form action="addincome.php" method="post" class="col-md-8 mx-md-auto fs-2">
 					
-						<p class="mt-5" ><label> Kwota przychodu:  <input type="number" name="income" step="0.01" required aria-label="Kwota przychodu"></label></p>
+						<p class="mt-5" ><label> Kwota przychodu:  <input type="number" name="incomevalue" step="0.01" required aria-label="Kwota przychodu"></label></p>
 						
 						<p class="mt-5"><label aria-label="Data">  Data: <input type="date" name="incDate" id="incDate" class="form__date" required ></label></p>
-						
 						<label class="mt-5 font-weight-bold "> Kategoria przychodu:</label>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome1" required>
-								<label class="form-check-label" for="whatIncome1" >
-								Wynagrodzenie
-							  </label>
-							</div>
-							
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome2" required>
-								<label class="form-check-label" for="whatIncome2" >
-								Odsetki bankowe
-							  </label>
-							</div>
-							
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome3" required>
-								<label class="form-check-label" for="whatIncome3" >
-								Sprzedaż na allegro
-							  </label>
-							</div>
-							
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome4" required>
-								<label class="form-check-label" for="whatIncome4" >
-								Inne
-							  </label>
-							</div>
 						
-							<input type="text" name="IncComment" placeholder="Komentarz do wydatku" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" class="mt-3"> 
+						<?php
+							require_once "config.php";
+							mysqli_report(MYSQLI_REPORT_STRICT);
+
+							$connection = new mysqli($host, $user, $password, $database);
+							if($connection->connect_errno!=0) {
+							throw new Exception (mysqli_connect_errno());
+							}
+							
+							else{
+								$ID = $_SESSION['ID'];
+								$result=$connection->query("SELECT iset.categoryID, icat.incomeCatName FROM income_categories AS icat, income_settings AS iset WHERE iset.userID='$ID' AND iset.categoryID=icat.incomeCatID ORDER BY iset.categoryID ASC");
+								
+								$catNumber=$result->num_rows;
+								
+								for ($i=1; $i<=$catNumber; $i++){
+									$categories=mysqli_fetch_assoc($result);
+							
+									$catID=$categories['categoryID'];
+									$catName=$categories['incomeCatName'];			
+									
+									echo '<div class="form-check">';
+									echo '<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome'.$catID.'" value="'.$catID.'" required>';
+									echo '<label class="form-check-label" for="whatIncome'.$catID.'" >';
+									echo $catName;
+									echo '</label></div>';
+							
+								}							
+							}
+							
+						$connection->close();
+						?>
+						
+							<input type="text" name="IncComment" placeholder="Komentarz do przychodu" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" class="mt-3"> 
 							
 						<div class="mt-5">
 							<input type="submit" value="Dodaj">
