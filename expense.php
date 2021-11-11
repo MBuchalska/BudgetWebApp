@@ -10,7 +10,7 @@ if($_SESSION['logged']==false){
 <html lang="pl">
 <head>
 	<meta charset="utf-8"/>
-	<title>  Dodaj przychód </title>
+	<title>  Dodaj wydatek </title>
 	<meta name="description" content ="Aplikacja pomoże ci zapanować nad swoim domowym budżetem"/>
 	<meta name="keywords" content="budżet, planowanie wydatków, zestawienia budżetowe"/>
 	<meta http-equiv="X-UA-Compatible" content ="IE=edge"/>
@@ -30,8 +30,9 @@ if($_SESSION['logged']==false){
 <body>
 	
 		<header>
-			<h1 class="h1 text-center my-4 font-weight-bold text-uppercase ">  Dodawanie przychodu </h1>
+			<h1 class="h1 text-center my-4 font-weight-bold text-uppercase ">  Dodawanie wydatku </h1>
 		</header>
+		
 	
 		<nav class="navbar navbar-dark bg-nav navbar-expand-md mx-auto">
 			
@@ -56,21 +57,20 @@ if($_SESSION['logged']==false){
 		<section>
 			<div class="row">
 				<?php
-				if ($_SESSION['incomeadded']==true){
-					echo '<p class="h2 text-center mt-5 font-weight-bold"> Przychód dodany do bazy </p>';
-					$_SESSION['incomeadded']=false;
+				if ($_SESSION['expAdded']==true){
+					echo '<p class="h2 text-center mt-5 font-weight-bold"> Wydatek dodany do bazy </p>';
+					$_SESSION['expAdded']=false;
 				}
 				else echo '<p class="h2 text-center mt-5 font-weight-bold"> Uzupełnij formularz poniżej </p>';
 				?>
-				
-				<form action="addincome.php" method="post" class="col-md-8 mx-md-auto fs-2">
+				<form action="addexpense.php" method="post" class="col-md-8 mx-md-auto fs-2">
 					
-						<p class="mt-5" ><label> Kwota przychodu:  <input type="number" name="incomevalue" step="0.01" required aria-label="Kwota przychodu"></label></p>
+						<p class="mt-5" ><label> Kwota wydatku:  <input type="number" name="expencevalue" step="0.01" required aria-label="Kwota wydatku"></label></p>
 						
-						<p class="mt-5"><label aria-label="Data">  Data: <input type="date" name="incDate" id="incDate" class="form__date" required ></label></p>
-						<label class="mt-5 font-weight-bold "> Kategoria przychodu:</label>
+						<p class="mt-5"><label aria-label="Data">  Data: <input type="date" name="expDate" id="expDate" class="form__date"  required ></label></p>
 						
-						<?php
+						<label class="mt-5 font-weight-bold "> Sposób płatności:</label>
+							<?php
 							require_once "config.php";
 							mysqli_report(MYSQLI_REPORT_STRICT);
 
@@ -81,29 +81,64 @@ if($_SESSION['logged']==false){
 							
 							else{
 								$ID = $_SESSION['ID'];
-								$result=$connection->query("SELECT iset.categoryID, icat.incomeCatName FROM income_categories AS icat, income_settings AS iset WHERE iset.userID='$ID' AND iset.categoryID=icat.incomeCatID ORDER BY iset.categoryID ASC");
+								$result=$connection->query("SELECT pim.payMethCatName, pset.categoryID FROM pay_method_categories AS pim, pay_method_settings AS pset WHERE pset.userID='$ID' AND pset.categoryID=pim.payMethCatID ORDER BY pset.categoryID ASC");
 								
-								$catNumber=$result->num_rows;
+								$wayNumber=$result->num_rows;
 								
-								for ($i=1; $i<=$catNumber; $i++){
+								for ($i=1; $i<=$wayNumber; $i++){
 									$categories=mysqli_fetch_assoc($result);
 							
-									$catID=$categories['categoryID'];
-									$catName=$categories['incomeCatName'];			
+									$payCatID=$categories['categoryID'];
+									$payCatName=$categories['payMethCatName'];			
 									
 									echo '<div class="form-check">';
-									echo '<input class="form-check-input" type="radio" name="whatIncome" id="whatIncome'.$catID.'" value="'.$catID.'" required>';
-									echo '<label class="form-check-label" for="whatIncome'.$catID.'" >';
-									echo $catName;
-									echo '</label></div>';
-							
+									echo '<input class="form-check-input" type="radio" name="HowToPay" id="HowToPay'.$payCatID.'" value="'.$payCatID.'" required>';
+									echo '<label class="form-check-label" for="HowToPay'.$payCatID.'" >';
+									echo $payCatName;
+									echo '</label>	</div>';
 								}							
 							}
 							
-						$connection->close();
-						?>
+							$connection->close();
+							?>
+													
 						
-							<input type="text" name="IncComment" placeholder="Komentarz do przychodu" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" class="mt-3"> 
+						<div class="mt-5">
+							<label for="expCategory"> Kategoria wydatku: </label>
+								<select id="expCategory" name="expCategory" required>
+								<option value=""> wybierz  </option>
+								<?php
+								require_once "config.php";
+								mysqli_report(MYSQLI_REPORT_STRICT);
+
+								$connection = new mysqli($host, $user, $password, $database);
+								if($connection->connect_errno!=0) {
+								throw new Exception (mysqli_connect_errno());
+								}
+								
+								else{
+									$ID = $_SESSION['ID'];
+									$result=$connection->query("SELECT ec.expenseCatName, es.categoryID FROM expense_categories AS ec, expense_settings AS es WHERE es.userID='$ID' AND es.categoryID=ec.expenseCatID ORDER BY ec.expenseCatID ASC");
+									
+									$expNumber=$result->num_rows;
+									
+									for ($i=1; $i<=$expNumber; $i++){
+										$categories=mysqli_fetch_assoc($result);
+								
+										$expCatID=$categories['categoryID'];
+										$expCatName=$categories['expenseCatName'];			
+										
+										echo '<option value="'.$expCatID.'">'.$expCatName.'</option>';
+										
+									}							
+								}
+								
+								$connection->close();
+								?>
+									
+								</select>
+							</div>
+							<input type="text" name="ExpComment" placeholder="Komentarz do wydatku" onfocus="this.placeholder=''" onblur="this.placeholder='Komentarz'" class="mt-3"> 
 							
 						<div class="mt-5">
 							<input type="submit" value="Dodaj">
