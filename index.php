@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['logged']==true){
+if((isset($_SESSION['logged']))&&($_SESSION['logged']==true)){
 	header('Location: menu.php');
 	exit();
 }

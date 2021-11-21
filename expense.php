@@ -46,7 +46,7 @@ if($_SESSION['logged']==false){
 				<ul class="navbar-nav mx-auto">
 					<li class="nav-item"><a class="nav-link" href="income.php">Dodaj przychód </a></li>
 					<li class="nav-item"><a class="nav-link active" href="expense.php">Dodaj wydatek</a></li>
-					<li class="nav-item"><a class="nav-link" href="balance.html">Przeglądaj bilans</a></li>
+					<li class="nav-item"><a class="nav-link" href="balance.php">Przeglądaj bilans</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Ustawienia </a></li>
 					<li class="nav-item"><a class="nav-link" href="logout.php"><i class="icon-logout"></i>Wyloguj się </a></li>
 				</ul>
@@ -57,7 +57,7 @@ if($_SESSION['logged']==false){
 		<section>
 			<div class="row">
 				<?php
-				if ($_SESSION['expAdded']==true){
+				if ((isset($_SESSION['expAdded']))&&($_SESSION['expAdded']==true)){
 					echo '<p class="h2 text-center mt-5 font-weight-bold"> Wydatek dodany do bazy </p>';
 					$_SESSION['expAdded']=false;
 				}

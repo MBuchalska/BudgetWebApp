@@ -45,7 +45,7 @@ if($_SESSION['logged']==false){
 					<ul class="navbar-nav mx-auto">
 						<li class="nav-item"><a class="nav-link" href="income.php">Dodaj przychód </a></li>
 						<li class="nav-item"><a class="nav-link" href="expense.php">Dodaj wydatek</a></li>
-						<li class="nav-item"><a class="nav-link" href="balance.html">Przeglądaj bilans</a></li>
+						<li class="nav-item"><a class="nav-link" href="balance.php">Przeglądaj bilans</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Ustawienia </a></li>
 						<li class="nav-item"><a class="nav-link" href="logout.php"><i class="icon-logout"></i>Wyloguj się </a></li>
 					</ul>

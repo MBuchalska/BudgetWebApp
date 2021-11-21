@@ -4,6 +4,8 @@ session_start();
 $_SESSION['logged']=false;
 unset($_SESSION['ID']);
 unset($_SESSION['login']);
+
+
 ?>
 
 
