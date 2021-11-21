@@ -80,16 +80,31 @@ if(isset($_POST['mail'])){
 						$result=$connection->query("SELECT userID FROM users WHERE email='$email'");
 						$ID = $result->fetch_array(MYSQLI_NUM);
 						
-						for($i=1; $i<18; $i++){
-							$connection->query("INSERT INTO expense_settings VALUES (NULL, '$ID[0]', '$i')");		
+						//adding default expenses to settings
+						$result2=$connection->query("SELECT expenseCatID FROM expense_categories WHERE IfDefault=1");
+						$expNumber=$result2->num_rows;
+						for($i=1; $i<=$expNumber; $i++){
+							$numbers=mysqli_fetch_assoc($result2);
+							$number=$numbers['expenseCatID'];
+							$connection->query("INSERT INTO expense_settings VALUES (NULL, '$ID[0]', '$number')");		
 						}
 						
-						for($i=1; $i<5; $i++){
-							$connection->query("INSERT INTO income_settings VALUES (NULL, '$ID[0]', '$i')");		
+						// adding default income settings
+						$result3=$connection->query("SELECT incomeCatID FROM income_categories WHERE IfDefault=1");
+						$incNumber=$result3->num_rows;
+						for($i=1; $i<=$incNumber; $i++){
+							$numbers=mysqli_fetch_assoc($result3);
+							$number=$numbers['incomeCatID'];
+							$connection->query("INSERT INTO income_settings VALUES (NULL, '$ID[0]', '$number')");		
 						}
 						
-						for($i=1; $i<4; $i++){
-							$connection->query("INSERT INTO pay_method_settings VALUES (NULL, '$ID[0]', '$i')");		
+						// adding default payment methods 
+						$result4=$connection->query("SELECT payMethCatID FROM pay_method_categories WHERE IfDefault=1");
+						$payNumber=$result4->num_rows;
+						for($i=1; $i<=$payNumber; $i++){
+							$numbers=mysqli_fetch_assoc($result4);
+							$number=$numbers['payMethCatID'];
+							$connection->query("INSERT INTO pay_method_settings VALUES (NULL, '$ID[0]', '$number')");		
 						}
 						
 						//redirecting to welcoming page
