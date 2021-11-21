@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION['logged']==false){
+	header('Location: index.php');
+	exit();
+}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -27,7 +35,7 @@
 		
 			<nav class="navbar navbar-dark bg-nav navbar-expand-md mx-auto">
 			
-			<a class="navbar-brand" href="menu.html"><i class="icon-dollar"></i> YourBudgetApp</a>
+			<a class="navbar-brand" href="menu.php"><i class="icon-dollar"></i> YourBudgetApp</a>
 			
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 			<span class="navbar-toggler-icon"></span>
@@ -35,11 +43,11 @@
 			
 				<div class="collapse navbar-collapse" id="menu" > 
 					<ul class="navbar-nav mx-auto">
-						<li class="nav-item"><a class="nav-link" href="income.html">Dodaj przychód </a></li>
-						<li class="nav-item"><a class="nav-link" href="expense.html">Dodaj wydatek</a></li>
-						<li class="nav-item"><a class="nav-link" href="balance.html">Przeglądaj bilans</a></li>
+						<li class="nav-item"><a class="nav-link" href="income.php">Dodaj przychód </a></li>
+						<li class="nav-item"><a class="nav-link" href="expense.php">Dodaj wydatek</a></li>
+						<li class="nav-item"><a class="nav-link" href="balance.php">Przeglądaj bilans</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Ustawienia </a></li>
-						<li class="nav-item"><a class="nav-link" href="index.html"><i class="icon-logout"></i>Wyloguj się </a></li>
+						<li class="nav-item"><a class="nav-link" href="logout.php"><i class="icon-logout"></i>Wyloguj się </a></li>
 					</ul>
 				</div>
 			</nav>
@@ -48,7 +56,9 @@
 			<section>
 				<div class="row"> 
 					<div class="col-md-8 mx-auto my-5">
-						<p> Witaj [Użytkowniku] </p>
+						<?php
+						echo  '<p> Witaj '.$_SESSION['login'].'!</p>'
+						?>
 						<p class="text-justify"> Witaj w aplikacji, która pomoże Ci prowadzić Twój domowy budżet. Dodawaj przychody i wydatki, przeglądaj zestawienia i dzięki temu naucz się oczszędzać.</p>
 						<p class ="quote"> "Pieniądze czynią ludzi bogatymi, natomiast błędem jest sądzić, że czynią ich lepszymi albo nawet gorszymi. O ludziach świadczą ich uczynki oraz to, jaki ślad po sobie zostawiają" </p>
 						<p class ="author"> Terry Pratchett, "Spryciarz z Londynu" </p>
