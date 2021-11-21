@@ -96,82 +96,94 @@ if($_SESSION['logged']==false){
 							
 							// expense table
 							$result=$connection->query("SELECT ecat.expenseCatName, SUM(exp.amount) FROM  expense_categories AS ecat, expenses AS exp WHERE userID='$ID' AND exp.data >='$Data1' AND exp.data<='$Data2' AND exp.amount>0  AND exp.categoryID=ecat.expenseCatID GROUP BY exp.categoryID ORDER BY SUM(exp.amount) DESC");
-								
-							echo '<div class="col-md-5 mt-3 mx-md-auto"> Tabela z wydatkami';
-							echo '<table class="table mt-3" id="expenseTable">';
-							echo '<thead>	<tr>';
-							echo '<th scope="col">wydatek</th>';
-							echo '<th scope="col">kwota [PLN]</th></tr></thead><tbody>';	
-								
-							$expNumber=$result->num_rows;
-							for ($i=1; $i<=$expNumber; $i++){
-								$categories=mysqli_fetch_assoc($result);
-								$catName = $categories['expenseCatName'];
-								$sum = number_format($categories['SUM(exp.amount)'],2, '.', '');
+							
+							$expNumber=$result->num_rows;		
+							if ($expNumber ==0) echo '<div class="col-md-5 mt-3 mx-md-auto"> W tym okresie nie masz żadnych wydatków </div>';
+							
+							else{
+								echo '<div class="col-md-5 mt-3 mx-md-auto"> Tabela z wydatkami';
+								echo '<table class="table mt-3" id="expenseTable">';
+								echo '<thead>	<tr>';
+								echo '<th scope="col">wydatek</th>';
+								echo '<th scope="col">kwota [PLN]</th></tr></thead><tbody>';	
 									
-								echo '<tr><td>'.$catName.'</td>';
-								echo '<td class="cell">'.$sum.'</td></tr>';
-								$AllExpenseSum+=$sum;
-							}
-								echo '</tbody></table></div>';
-									
+								
+								for ($i=1; $i<=$expNumber; $i++){
+									$categories=mysqli_fetch_assoc($result);
+									$catName = $categories['expenseCatName'];
+									$sum = number_format($categories['SUM(exp.amount)'],2, '.', '');
+										
+									echo '<tr><td>'.$catName.'</td>';
+									echo '<td class="cell">'.$sum.'</td></tr>';
+									$AllExpenseSum+=$sum;
+								}
+									echo '</tbody></table></div>';
+							}		
 							
 							//income table
 							$result2=$connection->query("SELECT icat.incomeCatName, SUM(inc.amount) FROM  income_categories AS icat, incomes AS inc WHERE userID='$ID' AND inc.data >='$Data1' AND inc.data<='$Data2' AND inc.amount>0  AND inc.categoryID=icat.incomeCatID GROUP BY inc.categoryID ORDER BY SUM(inc.amount) DESC");
 							
-							echo '<div class="col-md-5 mt-3"> ';
-							echo '<div class="income"> Tabela z przychodami';
-							echo '<table class="table mt-3">';
-							echo '<thead><tr>';
-							echo '<th scope="col">przychód</th>';
-							echo  '<th scope="col">kwota [PLN]</th></tr></thead><tbody>';
-							
 							$incNumber=$result2->num_rows;
-							for ($i=1; $i<=$incNumber; $i++){
-								$categories2=mysqli_fetch_assoc($result2);
-								$incName = $categories2['incomeCatName'];
-								$incSum = number_format($categories2['SUM(inc.amount)'],2, '.', '');
+							if ($incNumber==0) echo '<div class="col-md-5 mt-3 mx-md-auto"> W tym okresie nie masz żadnych przychodów </div>';
+							
+							else {
+								echo '<div class="col-md-5 mt-3"> ';
+								echo '<div class="income"> Tabela z przychodami';
+								echo '<table class="table mt-3">';
+								echo '<thead><tr>';
+								echo '<th scope="col">przychód</th>';
+								echo  '<th scope="col">kwota [PLN]</th></tr></thead><tbody>';
 								
-								echo '<tr><td>'.$incName.'</td>';
-								echo '<td class="cell">'.$incSum.'</td></tr>';
-								$AllIncomeSum+=$incSum;
+								
+								for ($i=1; $i<=$incNumber; $i++){
+									$categories2=mysqli_fetch_assoc($result2);
+									$incName = $categories2['incomeCatName'];
+									$incSum = number_format($categories2['SUM(inc.amount)'],2, '.', '');
+									
+									echo '<tr><td>'.$incName.'</td>';
+									echo '<td class="cell">'.$incSum.'</td></tr>';
+									$AllIncomeSum+=$incSum;
+								}
+								echo '</tbody></table></div>';
 							}
-							echo '</tbody></table></div>';
 							
 							// summary table
-							echo '<div class=""><p >Jak ci idzie oszczędzanie:</p><p id="yourBudget">  </p>';
-							echo '<table class="table mt-3" id="summaryTab">';
-							echo '<tbody>	<tr>	<td>Przychody: </td>';
-							echo '<td  class="cell" id="IncomeSum" >'.$AllIncomeSum.'</td></tr>';
-							echo '<tr>	<td>Wydatki: </td>';
-							echo '<td  class="cell" id="ExpenseSum" >'.$AllExpenseSum.'</td></tr>';
-							echo '<tr>	<td>Bilans: </td>';
-							echo '<td  class="cell" id="FinalBalance"> Bilans </td></tr></tbody></table></div></div>';
-							
-							//piechart
-							echo '<div id="piechart" class="col-md-8 mx-md-auto"> wykres kołowy wydatków </div>';
-							echo 	'<script> google.charts.load("current", {"packages":["corechart"]});';
-							echo 'google.charts.setOnLoadCallback(drawChart);';
-
-							echo 'function drawChart() { var data = google.visualization.arrayToDataTable([';
-							echo '["Wydatek", "Kwota"],';
-								$result3=$connection->query("SELECT ecat.expenseCatName, SUM(exp.amount) FROM  expense_categories AS ecat, expenses AS exp WHERE userID='$ID' AND exp.data >='$Data1' AND exp.data<='$Data2' AND exp.amount>0  AND exp.categoryID=ecat.expenseCatID GROUP BY exp.categoryID ORDER BY SUM(exp.amount) DESC");
-							for ($i=1; $i<=$expNumber; $i++){
-								$categories=mysqli_fetch_assoc($result3);
-								$catName = $categories['expenseCatName'];
-								$sum = number_format($categories['SUM(exp.amount)'],2, '.', '');
-								echo '["'.$catName.'",'.$sum.'],';								
+							if (($expNumber==0)&&($incNumber==0)) echo '<p></p>';
+							else {
+								echo '<div class=""><p >Jak ci idzie oszczędzanie:</p><p id="yourBudget">  </p>';
+								echo '<table class="table mt-3" id="summaryTab">';
+								echo '<tbody>	<tr>	<td>Przychody: </td>';
+								echo '<td  class="cell" id="IncomeSum" >'.$AllIncomeSum.'</td></tr>';
+								echo '<tr>	<td>Wydatki: </td>';
+								echo '<td  class="cell" id="ExpenseSum" >'.$AllExpenseSum.'</td></tr>';
+								echo '<tr>	<td>Bilans: </td>';
+								echo '<td  class="cell" id="FinalBalance"> Bilans </td></tr></tbody></table></div></div>';
 							}
-							echo ']);';
+							//piechart
+							if ($expNumber!=0) {
+								echo '<div id="piechart" class="col-md-8 mx-md-auto"> wykres kołowy wydatków </div>';
+								echo 	'<script> google.charts.load("current", {"packages":["corechart"]});';
+								echo 'google.charts.setOnLoadCallback(drawChart);';
 
-							echo 'var options = {title: "Zestawienie wydatków",';
-							echo 'backgroundColor: "#ecc9c2",';
-							echo 'fontSize: 18,';
-							echo 'fontName: "Lato",};';
+								echo 'function drawChart() { var data = google.visualization.arrayToDataTable([';
+								echo '["Wydatek", "Kwota"],';
+									$result3=$connection->query("SELECT ecat.expenseCatName, SUM(exp.amount) FROM  expense_categories AS ecat, expenses AS exp WHERE userID='$ID' AND exp.data >='$Data1' AND exp.data<='$Data2' AND exp.amount>0  AND exp.categoryID=ecat.expenseCatID GROUP BY exp.categoryID ORDER BY SUM(exp.amount) DESC");
+								for ($i=1; $i<=$expNumber; $i++){
+									$categories=mysqli_fetch_assoc($result3);
+									$catName = $categories['expenseCatName'];
+									$sum = number_format($categories['SUM(exp.amount)'],2, '.', '');
+									echo '["'.$catName.'",'.$sum.'],';								
+								}
+								echo ']);';
 
-							echo 'var chart = new google.visualization.PieChart(document.getElementById("piechart"));';
-							echo 'chart.draw(data, options);}	</script>';
-				
+								echo 'var options = {title: "Zestawienie wydatków",';
+								echo 'backgroundColor: "#ecc9c2",';
+								echo 'fontSize: 18,';
+								echo 'fontName: "Lato",};';
+
+								echo 'var chart = new google.visualization.PieChart(document.getElementById("piechart"));';
+								echo 'chart.draw(data, options);}	</script>';
+							}
 						}
 							$connection->close();
 							unset($_SESSION['Date1']);
